@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite tests="3" failures="0" time="6.090" name="port_domain_service_backend/internal/adapters/handler">
+		<properties>
+			<property name="go.version" value="go1.18.10"></property>
+			<property name="coverage.statements.pct" value="78.5"></property>
+		</properties>
+		<testcase classname="handler" name="TestHomePage" time="2.000"></testcase>
+		<testcase classname="handler" name="TestCreateUpdatePortDomain" time="2.060"></testcase>
+		<testcase classname="handler" name="TestCreateUpdatePortDomainIncorrectMethod" time="2.000"></testcase>
+	</testsuite>
+</testsuites>
