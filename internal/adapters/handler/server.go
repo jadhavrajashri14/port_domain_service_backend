@@ -38,7 +38,7 @@ func (s *Server) Run() {
 
 		err := http.ListenAndServe(serverPort, s.router)
 		if err != nil {
-			l.Info(err.Error())
+			l.Error(err.Error())
 		}
 	}()
 

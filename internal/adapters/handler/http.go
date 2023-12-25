@@ -31,20 +31,20 @@ func (h *HTTPHandler) CreatePortDomain(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
 		file, _, err := r.FormFile("jsonFile")
 		if err != nil {
-			logrus.Info(err.Error())
+			logrus.Error(err.Error())
 			defer file.Close()
 		}
 		defer file.Close()
 
 		buf := bytes.NewBuffer(nil)
 		if _, err := io.Copy(buf, file); err != nil {
-			logrus.Info(err.Error())
+			logrus.Error(err.Error())
 			w.WriteHeader(http.StatusInternalServerError)
 		}
 
 		err = h.svc.CreatePortDomain(buf.Bytes())
 		if err != nil {
-			logrus.Info(err.Error())
+			logrus.Error(err.Error())
 			w.WriteHeader(http.StatusInternalServerError)
 		}
 		w.WriteHeader(http.StatusCreated)
@@ -60,7 +60,7 @@ func (h *HTTPHandler) UpdatePortDomain(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "PATCH" {
 		if err := json.NewDecoder(r.Body).Decode(&ports); err != nil {
-			logrus.Info("unable to parse request body")
+			logrus.Error("unable to parse request body")
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}
@@ -68,7 +68,7 @@ func (h *HTTPHandler) UpdatePortDomain(w http.ResponseWriter, r *http.Request) {
 
 		details, err := h.svc.UpdatePortDomain(ports)
 		if err != nil {
-			logrus.Info("unable to update port domain")
+			logrus.Error("unable to update port domain")
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}

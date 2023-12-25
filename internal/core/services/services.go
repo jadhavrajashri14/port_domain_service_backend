@@ -22,6 +22,7 @@ func (pds *PortDomainsService) CreatePortDomain(fileBytes []byte) error {
 	logrus.Info("PortDomainsService CreatePortDomain called!")
 	err := pds.repo.CreatePortDomain(fileBytes)
 	if err != nil {
+		logrus.Error(err.Error())
 		return err
 	}
 	return nil
@@ -30,6 +31,7 @@ func (pds *PortDomainsService) CreatePortDomain(fileBytes []byte) error {
 func (pds *PortDomainsService) UpdatePortDomain(pd domain.PortDetails) (domain.PortDetail, error) {
 	details, err := pds.repo.UpdatePortDomain(pd)
 	if err != nil {
+		logrus.Error(err.Error())
 		return nil, fmt.Errorf("unable to update port domain : %s", err.Error())
 	}
 	return details, nil

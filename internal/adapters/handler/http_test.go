@@ -39,7 +39,7 @@ func TestHomePage(t *testing.T) {
 
 		svr, err := NewServer(ctx, cancel, pds)
 		if err != nil {
-			logrus.WithError(err).Fatal("unable to create the API server")
+			t.Fatal("unable to create the API server")
 		}
 
 		go func() {
@@ -91,7 +91,7 @@ func TestCreateUpdatePortDomain(t *testing.T) {
 
 		svr, err := NewServer(ctx, cancel, pds)
 		if err != nil {
-			logrus.WithError(err).Fatal("unable to create the API server")
+			t.Fatal("unable to create the API server")
 		}
 
 		go func() {
@@ -140,6 +140,7 @@ func TestCreateUpdatePortDomain(t *testing.T) {
 			Convey("TestCreateUpdatePortDomain update ", func() {
 				setReq := "/update"
 
+				//  -- this way to supply data also works
 				//payload := []byte(`{"USSEA":{"name":"Cape Romanzof","city":"Cape Romanzof","province":"Alaska","country":"United Arab Emirates","alias":["Tacoma"],"regions":[],"coordinates":[55.2756505, 25.284755],"timezone":"America/Anchorage","unlocs":["AEPRA"],"code":"3001"}}`)
 
 				//  -- this way to supply data also works
@@ -156,9 +157,10 @@ func TestCreateUpdatePortDomain(t *testing.T) {
 					"unlocs":      []string{"AEPRA"},
 					"code":        "3001",
 				}
+				logrus.Info(jd)
 				payload, _ := json.Marshal(jd)
 
-				logrus.Info(payload)
+				//logrus.Info(payload)
 
 				req := httptest.NewRequest(http.MethodPatch, setReq, bytes.NewBuffer(payload))
 				req.Header.Set("Content-Type", "application/json")
@@ -210,7 +212,7 @@ func TestCreateUpdatePortDomainIncorrectMethod(t *testing.T) {
 
 		svr, err := NewServer(ctx, cancel, pds)
 		if err != nil {
-			logrus.WithError(err).Fatal("unable to create the API server")
+			t.Fatal("unable to create the API server")
 		}
 
 		go func() {
@@ -250,7 +252,6 @@ func TestCreateUpdatePortDomainIncorrectMethod(t *testing.T) {
 			logrus.Info("got sigdone, sending cancel")
 			cancel()
 		}
-
 		t.Logf("exiting TestCreateUpdatePortDomain")
 	})
 }

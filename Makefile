@@ -24,10 +24,10 @@ test-flake:
 	go test -v -test.failfast -test.count 2 ./...
 
 build: test
-	GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags="-w -s" -o ./bin/ ./...
+	GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags="-w -s" -o ./app/ ./cmd/port_domain_service.go
 
 set:
 	set
 
 clean:
-	rm -rf ./bin coverage.json coverage.out coverage.xml test.out test.xml report.txt
+	rm -rf ./app coverage.json coverage.out coverage.xml test.out test.xml report.txt
