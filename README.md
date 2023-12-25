@@ -38,31 +38,6 @@ The screenshots of postman are attached in the mail.
 
 	-- Status 200 OK
 
-----------------------------
-## Build Tools used
-
-Framework used : net/http to create the endpoints
-in-memory map is used to store the ports of the json file
-testing - github.com/smartystreets/goconvey/convey package used
-validation - done inside the code where endpoint functions are defined
-signal handling - done in the cmd/port_domain_service.go file. This is the main() function of the server.
-(e.g. a TERM or KILL signal should result in a graceful shutdown). -- DONE
-Code structure according to hexagonal architecture  -- DONE
-A Dockerfile should be used to contain and run the service (Hint: extra points for avoiding code building in docker). -- DONE
-readme.md should explain how to run your program and test it. -- DONE
-
--------------------------------
-## Build Tools used
--------------------------------
-go-junit-report  - go-junit-report reads the go test verbose output from standard in and writes junit compatible XML to standard out.
-
-gocov - Package gocov is a code coverage analysis tool for Go.
-
-Swaggo  - this is not used in the code, but I know how to use this, used frequently in the endpoint which I developed.
-Swaggo is a tool that creates Swagger documentation for Go APIs. It makes documenting API endpoints easier, helping developers understand and use the API.
-
-Golangci-lint
-Golangci-lint is a tool for checking Go code quality, finding issues, bugs, and style problems. It helps keep the code clean and maintainable.
 
 -------------------------------
 ## Code sturcture
@@ -84,6 +59,4 @@ this defines the endpoints of the port_domain_service application
 
 repository - internal/adapters/repository/inmemdb.go
 this defines the in memory map to be used for storing ports data and contains the repository functions to store and update the ports data.
-
-Makefile and Dockerfile is also provided.
 
