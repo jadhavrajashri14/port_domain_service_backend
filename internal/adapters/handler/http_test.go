@@ -110,13 +110,13 @@ func TestCreateUpdatePortDomain(t *testing.T) {
 			// Create a new multipart writer with the buffer
 			w := multipart.NewWriter(&buf)
 			// Add a file to the request
-			file, err := os.Open("/home/rajashrijadhav/RajashriJadhavData/RAJASHRI_ASSIGNMENTS/port_domain_service_backend/testdata/ports.json")
+			file, err := os.Open("https://github.com/jadhavrajashri14/port_domain_service_backend/blob/develop/testdata/ports.json")
 			if err != nil {
 				t.Fatal(err)
 			}
 			defer file.Close()
 			// Create a new form field
-			fw, err := w.CreateFormFile("jsonFile", "/home/rajashrijadhav/RajashriJadhavData/RAJASHRI_ASSIGNMENTS/port_domain_service_backend/testdata/ports.json")
+			fw, err := w.CreateFormFile("jsonFile", "https://github.com/jadhavrajashri14/port_domain_service_backend/blob/develop/testdata/ports.json")
 			if err != nil {
 				t.Fatal(err)
 			}
